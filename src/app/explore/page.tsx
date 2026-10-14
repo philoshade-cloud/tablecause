@@ -81,7 +81,8 @@ export default function Explore({ searchParams }: { searchParams: SP }) {
     <div className="mx-auto max-w-6xl px-4 pt-12">
       <h1 className="text-4xl">Find a dinner</h1>
       <p className="text-ink-2 mt-2 max-w-xl">
-        Every dinner below is hosted by someone whose identity we&apos;ve verified, at a venue they&apos;ve booked.
+        Before a dinner goes live, we verify the host&apos;s identity and their venue booking. The dinners in this
+        preview are samples.
       </p>
       <div className="mt-8 mb-10">
         <Suspense fallback={<div className="h-16" />}>
