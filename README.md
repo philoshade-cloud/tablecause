@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TableCause
 
-## Getting Started
+Small in-person dinners where guests back what the host is building. Phase 1: the public site Stripe reviews
+(listings, host profiles, policies) and a test-mode booking flow.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router, Cache Components), Tailwind CSS 4
+- Supabase (Postgres) project `tablecause` (`rwexcwwxztfptajwmgfe`, us-east-1)
+- Stripe Connect, direct charges on hosts' accounts (full Dashboard, losses on Stripe)
+
+## Run locally
 
 ```bash
+cp .env.example .env.local   # fill in the values
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Without database access (for example in a sandbox), run with sample data from `src/lib/fixtures.json`:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+TC_FIXTURES=1 npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment variables
 
-## Learn More
+| Name | What it is |
+| --- | --- |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase publishable key |
+| `SERVER_DB_SECRET` | Must match `public.app_secrets` row `server`. Lets the server call `server_*` functions. Rotate before launch |
+| `STRIPE_SECRET_KEY` | Stripe secret key (test mode: `sk_test_...`) |
+| `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Stripe publishable key (`pk_test_...`) |
+| `NEXT_PUBLIC_SITE_URL` | Public URL, used in share links |
+| `NEXT_PUBLIC_COMPANY_NAME`, `NEXT_PUBLIC_COMPANY_ADDRESS`, `NEXT_PUBLIC_COMPANY_UEN`, `NEXT_PUBLIC_SUPPORT_EMAIL` | Shown in the footer, contact page and policies |
 
-To learn more about Next.js, take a look at the following resources:
+## Booking flow (phase 1)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. `/d/[code]/book` collects name, email and contribution.
+2. `POST /api/bookings` creates a Customer and a SetupIntent (3D Secure requested) on the host's Stripe account and
+   records the booking (`card_saved`). In test mode, hosts without a connected account fall back to the platform account.
+3. Stripe Elements confirms the SetupIntent and returns to `/booking/[id]`, which stores the payment method.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Not built yet (phase 2): accounts and sign-in, host onboarding and dinner creation, the D-1 authorization hold,
+live check, post-dinner confirmation and capture, emails, admin queues.
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Import the repository into Vercel, add the environment variables above, and deploy. Do not set `TC_FIXTURES` in production.
