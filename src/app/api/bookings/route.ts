@@ -36,7 +36,7 @@ export async function POST(req: Request) {
 
   let account: string | undefined;
   try {
-    account = accountFor(ev.stripe_account_id);
+    account = await accountFor(s, ev.stripe_account_id);
   } catch {
     return NextResponse.json({ error: "This host can't take bookings yet." }, { status: 409 });
   }
@@ -54,7 +54,7 @@ export async function POST(req: Request) {
     opts,
   );
 
-  const { data: bookingId, error: bErr } = await client.rpc("server_create_booking", {
+  const { data: bookingId, error: bErr } = await client.rpc("server_create_booking_v2", {
     p_secret: serverSecret(),
     p_event: ev.event_id,
     p_name: name,
@@ -62,6 +62,7 @@ export async function POST(req: Request) {
     p_contribution: contribution,
     p_customer: customer.id,
     p_setup_intent: setup.id,
+    p_account: account ?? null,
   });
   if (bErr || !bookingId) {
     await s.setupIntents.cancel(setup.id, undefined, opts).catch(() => {});

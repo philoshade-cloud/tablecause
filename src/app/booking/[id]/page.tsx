@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { getDinner } from "@/lib/data";
 import { dinnerDate, money, shortDate } from "@/lib/format";
-import { accountFor, stripe } from "@/lib/stripe";
+import { stripe } from "@/lib/stripe";
 import { db, serverSecret } from "@/lib/supabase";
 
 type Params = Promise<{ id: string }>;
@@ -16,7 +16,7 @@ async function Result({ params, searchParams }: { params: Params; searchParams: 
   const setupIntentId = typeof sp.setup_intent === "string" ? sp.setup_intent : "";
   const client = db();
   const [{ data: rows }, dinner] = await Promise.all([
-    client.rpc("server_booking", { p_secret: serverSecret(), p_booking: id }),
+    client.rpc("server_booking_v2", { p_secret: serverSecret(), p_booking: id }),
     code ? getDinner(code) : Promise.resolve(null),
   ]);
   const booking = Array.isArray(rows) ? rows[0] : null;
@@ -34,10 +34,8 @@ async function Result({ params, searchParams }: { params: Params; searchParams: 
   let saved = booking.has_card as boolean;
   if (!saved && setupIntentId) {
     const s = stripe();
-    const { data: info } = await client.rpc("server_event_payment_info", { p_secret: serverSecret(), p_event: dinner.id });
-    const ev = Array.isArray(info) ? info[0] : null;
-    if (s && ev) {
-      const acct = accountFor(ev.stripe_account_id);
+    if (s) {
+      const acct: string | null = booking.stripe_account_id;
       const si = await s.setupIntents.retrieve(setupIntentId, undefined, acct ? { stripeAccount: acct } : undefined);
       if (si.status === "succeeded" && typeof si.payment_method === "string") {
         await client.rpc("server_confirm_card", {
