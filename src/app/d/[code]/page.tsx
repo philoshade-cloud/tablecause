@@ -44,7 +44,7 @@ function Split({ d }: { d: DinnerWithHost }) {
       </dl>
       <p className="text-xs text-ink-2 mt-3">
         Based on the minimum seat of {money(s.seat, d.currency)}. The host pays for the meal out of the host fee. Card
-        processing (charged by Stripe, usually around 3%) comes out of the host&apos;s share.
+        processing (charged by our payment provider, usually around 3%) comes out of the host&apos;s share.
       </p>
       {hostHeavy && (
         <p className="text-sm mt-3 rounded-lg bg-paper-2 p-3">Most of your contribution goes to the host.</p>

@@ -19,12 +19,12 @@ export default function Privacy() {
           the dinner.
         </li>
         <li>
-          <strong>Payment details:</strong> your card is collected and stored by Stripe. We never see or store your
+          <strong>Payment details:</strong> your card is collected and stored by our payment provider. We never see or store your
           full card number.
         </li>
         <li>
           <strong>Host details:</strong> identity verification, payout account and tax information are collected by
-          Stripe. We receive the result of identity checks and the public channels hosts choose to link. For dinners at
+          our payment provider. We receive the result of identity checks and the public channels hosts choose to link. For dinners at
           home, we receive proof of address.
         </li>
         <li><strong>Messages</strong> you send to us, and reviews you post.</li>
@@ -51,7 +51,7 @@ export default function Privacy() {
           <strong>Other guests</strong> don&apos;t see your contribution. Your first name may be shown to the host
           and, if you choose, on the guest list.
         </li>
-        <li><strong>Stripe</strong>, which processes payments and verifies hosts.</li>
+        <li><strong>Our payment provider</strong>, which processes payments and verifies hosts.</li>
         <li><strong>Service providers</strong> who host our site and database or send our emails, under contracts that protect your data.</li>
         <li><strong>Authorities</strong>, where the law requires it or to prevent fraud or harm.</li>
       </ul>

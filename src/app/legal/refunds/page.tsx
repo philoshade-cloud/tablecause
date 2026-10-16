@@ -16,7 +16,7 @@ export default function Refunds() {
         choose is the total you pay. We don&apos;t add booking fees on top.
       </p>
       <p>
-        Out of each payment, TableCause keeps a 10% platform fee and Stripe, our payment processor, deducts its card
+        Out of each payment, TableCause keeps a 10% platform fee and our payment provider deducts its card
         processing fee. The rest goes to the host, who pays for the meal and keeps the host fee shown on the listing,
         then uses the remainder as described in the listing&apos;s &quot;How the money will be used&quot; section.
       </p>

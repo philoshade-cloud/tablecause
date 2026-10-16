@@ -55,7 +55,7 @@ export default function HowItWorks() {
         <div>
           <h2 className="text-3xl">What we check</h2>
           <ul className="mt-4 space-y-3">
-            <li>Every host verifies their identity with a government ID through our payment partner, Stripe.</li>
+            <li>Every host verifies their identity with a government ID through our payment provider.</li>
             <li>Hosts can link their public channels, so you can see the dinner was shared by the real person.</li>
             <li>Hosts give us proof of their venue booking. For dinners at home, they verify their address.</li>
             <li>Guests confirm whether the dinner happened as promised before any payment is taken.</li>
@@ -74,7 +74,7 @@ export default function HowItWorks() {
       <section className="mt-16 rounded-2xl border border-line p-8">
         <h2 className="text-3xl">Fees</h2>
         <p className="mt-3 max-w-2xl">
-          TableCause takes 10% of each seat. The card processing fee, charged by Stripe, also comes out of each payment
+          TableCause takes 10% of each seat. The card processing fee, charged by our payment provider, also comes out of each payment
           and varies by country and card type. Guests pay exactly the seat price they choose, with nothing added. If a
           dinner doesn&apos;t go ahead, nobody pays anything.
         </p>

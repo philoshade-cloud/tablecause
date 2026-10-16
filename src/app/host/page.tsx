@@ -36,8 +36,8 @@ export default function Host() {
         <div>
           <h2 className="text-2xl">How you get paid</h2>
           <p className="mt-3 text-ink-2">
-            Guest payments go straight into your own Stripe account once guests confirm the dinner happened. TableCause
-            takes 10% and Stripe deducts its card processing fee. You can see every payment in your Stripe dashboard.
+            Guest payments go to your own payout account with our payment provider once guests confirm the dinner happened. TableCause
+            takes 10% and the payment provider deducts its card processing fee. You can see every payment in your account.
           </p>
         </div>
       </section>

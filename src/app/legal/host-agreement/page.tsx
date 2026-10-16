@@ -12,7 +12,7 @@ export default function HostAgreement() {
     >
       <h2>Verification</h2>
       <ul>
-        <li>You must verify your identity with a government ID through Stripe and connect a Stripe account in your own name.</li>
+        <li>You must verify your identity with a government ID through our payment provider and connect a payout account in your own name.</li>
         <li>Your display name must be your legal name or the name you use on the public channels you link.</li>
         <li>For dinners at home, you must verify the address with a recent utility bill or similar document.</li>
         <li>You must give us proof of your venue booking before your dinner goes live.</li>
@@ -31,14 +31,14 @@ export default function HostAgreement() {
 
       <h2>How you&apos;re paid</h2>
       <p>
-        Guest payments are charged directly to your Stripe account after guests confirm the dinner happened as promised.
-        TableCause deducts a 10% platform fee from each payment, and Stripe deducts its processing fee. If guests report
+        Guest payments are charged directly to your payout account after guests confirm the dinner happened as promised.
+        TableCause deducts a 10% platform fee from each payment, and the payment provider deducts its processing fee. If guests report
         that promises weren&apos;t kept, we review the evidence and may capture only part of a payment or none of it.
         You agree to provide evidence when asked, such as photos from the dinner and venue receipts.
       </p>
       <p>
-        If a payment is refunded because you didn&apos;t keep your promises, the Stripe processing fee is not
-        returned and comes out of your balance. Chargebacks on your dinners are deducted from your Stripe balance.
+        If a payment is refunded because you didn&apos;t keep your promises, the payment processing fee is not
+        returned and comes out of your balance. Chargebacks on your dinners are deducted from your payout balance.
       </p>
 
       <h2>Using the money</h2>
@@ -57,7 +57,7 @@ export default function HostAgreement() {
       <p>
         You&apos;re responsible for any taxes on the money you receive, including income tax on your host fee and any
         sales tax or VAT that applies to your dinner. Money you receive for your cause may also be taxable depending on
-        where you live. Stripe may send you tax forms, such as a Form 1099-K in the United States. We recommend talking
+        where you live. Our payment provider may send you tax forms, such as a Form 1099-K in the United States. We recommend talking
         to a tax professional before your first dinner. TableCause doesn&apos;t give tax advice.
       </p>
 

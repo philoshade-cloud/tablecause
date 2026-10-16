@@ -30,7 +30,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="min-h-dvh flex flex-col">
         <div className="bg-ink text-paper text-sm">
           <p className="mx-auto max-w-6xl px-4 py-2">
-            Preview site. Dinners and hosts shown are samples, and bookings run in Stripe test mode. No real cards are
+            Preview site. Dinners and hosts shown are samples, and bookings run in test mode. No real cards are
             charged.
           </p>
         </div>
@@ -79,7 +79,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </div>
           <div className="mx-auto max-w-6xl px-4 pb-10 text-xs text-ink-2">
             TableCause is operated by {site.company} (UEN {site.uen}), {site.companyAddress}. Payments are processed by
-            Stripe. Contributions are not tax-deductible donations.
+            a licensed payment provider. Contributions are not tax-deductible donations.
           </div>
         </footer>
       </body>

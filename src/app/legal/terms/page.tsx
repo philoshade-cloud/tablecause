@@ -38,7 +38,7 @@ export default function Terms() {
       <h2>3. Booking a seat</h2>
       <p>
         When you book, you choose a contribution of at least the listed minimum and authorise us and our payment
-        processor, Stripe, to save your card and charge it on the host&apos;s behalf as described in our{" "}
+        provider to save your card and charge it on the host&apos;s behalf as described in our{" "}
         <Link href="/legal/refunds">payments, cancellations and refunds policy</Link>. In short: nothing is charged at
         booking, a hold is placed the day before the dinner, and the payment is taken only after guests confirm the
         dinner happened as promised.
@@ -58,7 +58,7 @@ export default function Terms() {
 
       <h2>5. Hosting</h2>
       <p>
-        Hosts must verify their identity, connect a Stripe account in their own name and agree to the{" "}
+        Hosts must verify their identity, connect a payout account with our payment provider in their own name and agree to the{" "}
         <Link href="/legal/host-agreement">host agreement</Link>, which forms part of these terms. Hosts are solely
         responsible for their dinners, their venues, the meal, the promises they make, the use of funds they receive
         and their own taxes.
@@ -67,7 +67,7 @@ export default function Terms() {
       <h2>6. Fees</h2>
       <p>
         TableCause charges a platform fee of 10% of each captured seat contribution, deducted from the payment before it
-        reaches the host. Stripe&apos;s card processing fee is also deducted from the host&apos;s share. Guests pay only
+        reaches the host. The payment provider&apos;s card processing fee is also deducted from the host&apos;s share. Guests pay only
         the contribution they choose.
       </p>
 
